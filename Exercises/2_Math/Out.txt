@@ -2,7 +2,12 @@ Part 1: basic calculations
 sqrt(2) = 1.41421
 2^(1/5) = 1.1487
 e^pi = 23.1407
+e^i = (0.540302,0.841471)
+e^(i pi) = (-1,1.22465e-16)
 pi^e = 22.4592
+pi^i = (0.413292,0.910598)
+i^i = (0.20788,0)
+log(i) = (0,1.5708)
 
 2. First 10 values for the Gamma function in the Sterling approximation 
 fgamma(1) = 1	 tgamma(1) = 1

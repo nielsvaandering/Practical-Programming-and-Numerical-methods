@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cmath>
+#include<complex>
 #include<numbers> 
 #include"sfuns.hpp"
 
@@ -15,10 +16,24 @@ int main() {
 
     constexpr double PI = std::numbers::pi; 
     constexpr double E = std::numbers::e;
+    constexpr std::complex<double> I(0.0, 1.0);
+
     double e_power_pi = std::pow(E, PI);
     double pi_power_e = std::pow(PI, E);
+
+    std::complex<double> e_power_i = std::pow(E,I);
+    std::complex<double> e_power_i_pi = std::pow(E,I * PI);
+    std::complex<double> pi_power_i = std::pow(PI,I);
+    std::complex<double> i_power_i = std::pow(I,I);
+    std::complex<double> log_i = std::log(I);
+
     std::cout << "e^pi = " << e_power_pi << std::endl;
+    std::cout << "e^i = " << e_power_i << "\n";
+    std::cout << "e^(i pi) = " << e_power_i_pi << "\n";
     std::cout << "pi^e = " << pi_power_e << std::endl;
+    std::cout << "pi^i = " << pi_power_i << "\n";
+    std::cout << "i^i = " << i_power_i << "\n";
+    std::cout << "log(i) = " << log_i << "\n";
     std::cout << "\n";
 
 

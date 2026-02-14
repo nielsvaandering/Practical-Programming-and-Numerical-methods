@@ -1,0 +1,15 @@
+This testfile is written by ai, so I hope it tests all cases 
+Testing vec<i>
+Caught expected division by zero exception
+All tests passed for vec<i>
+Testing vec<f>
+Caught expected division by zero exception
+All tests passed for vec<f>
+Testing vec<d>
+Caught expected division by zero exception
+All tests passed for vec<d>
+Testing vec<std::complex<f>>
+Complex vec tests completed
+Testing vec<std::complex<d>>
+Complex vec tests completed
+All vec template tests completed successfully!
