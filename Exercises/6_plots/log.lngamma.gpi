@@ -1,0 +1,22 @@
+\
+set terminal svg background "white" ;\
+set output "3_lngamma.svg" ;\
+set key right bottom ;\
+set tics out ;\
+set zero 0 ;\
+set xzeroaxis linetype -1 linecolor rgb "black" ;\
+set yzeroaxis linetype -1 linecolor rgb "black" ;\
+set format x "%g"  ;\
+set format y "%g" ;\
+set xtics axis ;\
+set ytics axis ;\
+set samples 4000 ;\
+set arrow from -4,graph(0,0) to -4,graph(1,1) nohead dt 2 lc rgb "blue" ;\
+set arrow from -3,graph(0,0) to -3,graph(1,1) nohead dt 2 lc rgb "blue" ;\
+set arrow from -2,graph(0,0) to -2,graph(1,1) nohead dt 2 lc rgb "blue" ;\
+set arrow from -1,graph(0,0) to -1,graph(1,1) nohead dt 2 lc rgb "blue" ;\
+set arrow from 0,graph(0,0) to 0,graph(1,1) nohead dt 2 lc rgb "blue" ;\
+plot [0:5][-5:5] \
+	"test_data.txt" index 2 using 1:2 with points title "lngamma approximation", \
+	log(gamma(x)) title "log(gamma(x))" with lines lc rgb "red";\
+
