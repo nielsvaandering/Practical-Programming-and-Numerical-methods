@@ -3,7 +3,7 @@ LDLIBS = -lstdc++ -lm -lpthread
 TIME = time --format "$$nthreads %e %U" --append --output $@
 
 #Once all the times are in, you want to comment Makefile in out.times and uncomment it here
-times.svg: out.times Makefile
+Times.svg: out.times Makefile
 	echo '\
 		set terminal svg background "white" ;\
 		set output "$@" ;\

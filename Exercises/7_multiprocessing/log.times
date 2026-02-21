@@ -1,6 +1,6 @@
 \
 	set terminal svg background "white" ;\
-	set output "times.svg" ;\
+	set output "Times.svg" ;\
 	set xlabel "number of threads" ;\
 	set ylabel "running time" ;\
 	a = 1; b = 10 ;\
