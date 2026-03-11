@@ -10,11 +10,11 @@ Times.svg: out.times Makefile
 		set output "$@" ;\
 		set xlabel "N: rows/columns matrix" ;\
 		set ylabel "running time" ;\
-		a = 1;b = 1; c = 1;\
-		f(x) = a + b* x + c* x**2 ;\
-		fit f(x) "$<" using 1:2 via a,b,c ;\
+		a = 1;b = 1; c = 1; d = 1;\
+		f(x) = a + b* x + c* x**2 + d * x**3;\
+		fit f(x) "$<" using 1:2 via a,b,c,d ;\
 		plot "$<" using 1:2 with linespoints title "times QR factorisation of NxN matrix", \
-		f(x) title "fit with a + b x + c x^2" ;\
+		f(x) title "fit with a + b x + c x^2 + d x^3" ;\
 		' | tee log.times | gnuplot
 
 
