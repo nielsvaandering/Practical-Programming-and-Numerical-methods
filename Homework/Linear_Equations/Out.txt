@@ -19,7 +19,7 @@ matrix R:
          0          0          0          0       53.5     -0.452       23.6 
          0          0          0          0          0       46.9      0.785 
          0          0          0          0          0          0       41.2 
-check that Q^T Q = 1 We see that the off-diagonal elements are of order 10^-16-10^-17. This has to do with machine precision.
+check that Q^T Q = 1. We see that the off-diagonal elements are of order 10^-16-10^-17. This has to do with machine precision.
 
          1  -1.53e-16  -5.55e-16  -1.39e-17   1.94e-16  -1.04e-16   1.39e-16 
  -1.53e-16          1   6.94e-17  -5.55e-17   1.39e-17   6.25e-17   2.78e-17 

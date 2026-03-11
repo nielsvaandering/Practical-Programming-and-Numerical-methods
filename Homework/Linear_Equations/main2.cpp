@@ -20,10 +20,13 @@ int main(int argc, char *argv[]){
     generate_random_matrix(A);
 
     auto [Q,R] = pp::qr::QR_decompose(A);
+    //I dont want to print anything, since I filled a file up to 602 MB when timing it with N up to 2000
+    /*
     std::cout << "Q:";
     Q.print();
     std::cout<<"R:";
     R.print();
+    */
 
 return 0;
 }
