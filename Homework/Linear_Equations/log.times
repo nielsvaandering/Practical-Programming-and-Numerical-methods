@@ -1,0 +1,11 @@
+\
+	set terminal svg background "white" ;\
+	set output "Times.svg" ;\
+	set xlabel "N: rows/columns matrix" ;\
+	set ylabel "running time" ;\
+	a = 1;b = 1; c = 1;\
+	f(x) = a + b* x + c* x**2 ;\
+	fit f(x) "out.times" using 1:2 via a,b,c ;\
+	plot "out.times" using 1:2 with linespoints title "times QR factorisation of NxN matrix", \
+	f(x) title "fit with a + b x + c x^2" ;\
+	

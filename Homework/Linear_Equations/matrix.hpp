@@ -124,6 +124,8 @@ struct matrix {
 	matrix& operator=(matrix&& other)=default;
 	int size1() const {return cols.empty() ? 0 : cols[0].size(); }
 	int size2() const {return cols.size();}
+	int rows() const {return cols.empty() ? 0 : cols[0].size(); }
+	int columns() const {return cols.size();}
 	inline double& operator()(int i, int j){return cols[j][i];}
 	inline double& operator[](int i, int j){return cols[j][i];}
 	inline const double& operator()(int i, int j)const{return cols[j][i];}

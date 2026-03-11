@@ -1,16 +1,21 @@
 #pragma once
 #include"matrix.hpp"
+#include <utility> 
 
 namespace pp {
+struct qr{
 
-struct QRResult {
-    matrix Q;
-    matrix R;
+static std::pair<matrix, matrix> QR_decompose(const matrix& A);
 
-    QRResult(int rows, int cols) : Q(rows, cols), R(cols, cols) {}
+static vector backsubstitution(const matrix& R, const vector& b);
+
+static vector solve(const matrix& A, const vector& b);
+
+static double det(const matrix& A);
+
+static matrix inverse(const matrix& A);
+
 };
-
-QRResult QR_decompose(const matrix& A);
 
 } // namespace pp
 
