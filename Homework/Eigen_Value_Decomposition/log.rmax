@@ -1,0 +1,9 @@
+\
+	set terminal svg background "white" ;\
+	set output "Change_rmax.svg" ;\
+	set xlabel "rmax" ;\
+	set ylabel "lowest energy" ;\
+	set style line 2 linetype 2 linewidth 2 linecolor rgb "red" ;\
+	plot "data_rmax.txt" using 1:3 with linespoints title "Lowest energy for different rmax values with fixed dr = 0.1", \
+	-0.5 with lines linestyle 2 title "Exact lowest energy" ;\
+	

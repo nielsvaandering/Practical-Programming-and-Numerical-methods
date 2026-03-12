@@ -1,0 +1,11 @@
+\
+	set terminal svg background "white" ;\
+	set output "Scaling.svg" ;\
+	set xlabel "N" ;\
+	set ylabel "time" ;\
+	a = 1;b = 1; c = 1; d = 1;\
+	f(x) = a + b* x + c* x**2 + d * x**3;\
+	fit f(x) "times.txt" using 1:2 via a,b,c,d ;\
+	plot "times.txt" using 1:2 with linespoints title "Lowest energy for different dr values with fixed rmax = 10" ,\
+	f(x) title "fit with a + b x + c x^2 + d x^3" ;\
+	
