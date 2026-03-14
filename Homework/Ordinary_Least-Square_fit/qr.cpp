@@ -7,7 +7,7 @@
 namespace pp {
     
 
-std::pair<matrix, matrix> qr::QR_decompose(const matrix& A){;
+std::pair<matrix, matrix> qr::QR_decompose(const matrix& A){
     int m = A.size2();
 
     matrix Q = A;
@@ -37,6 +37,15 @@ vector qr::solve(const matrix& A, const vector& b){
     vector x = pp::qr::backsubstitution(R,b_prime);
     return x;
 } // solve
+
+//So save computations, it is sometimes benificiary to call qr, and then do the other rotines with the QR input, instad of qr-decomposing every time
+vector qr::solve_QR(const matrix & Q, const matrix& R, const vector& b){
+    vector b_prime = Q.transpose() * b;
+    //We rewrite QR x = b to R x = Q^-1 b, and we use that Q^-1 = Q^T. We then solve R X = b', where b'= Q^T b.
+    //We then use backsubstitution to find x.
+    vector x = pp::qr::backsubstitution(R,b_prime);
+    return x;
+}
 
 //Input diagonal matrix R, and vector b. Output is vector x, which solves Rx = b.
 vector qr::backsubstitution(const matrix& R, const vector& b){
@@ -77,7 +86,14 @@ double qr::det(const matrix& A){
 //A^-1 = R^-1 Q^-1, where Q^-1 = Q^T, and we can find R^-1 by backsubstitution
 matrix qr::inverse(const matrix& A){
     auto [Q,R] = qr::QR_decompose(A);
-    int N = A.rows();
+    matrix R_inverse = qr::R_inverse(R);
+    matrix A_inverse =  R_inverse * Q.transpose();
+    return A_inverse;
+}//inverse
+
+//Special subroutine, since I sometimes only need to call this one (I already have R, and don't want to extra QR decompose R)
+matrix qr::R_inverse(const matrix& R){
+    int N = R.rows();
     matrix R_inverse(N,N);
     //Column i of R^-1 can be found by backsubstituion of R with unit vector e_i
     for(int i = 0; i < N; i++){
@@ -85,10 +101,7 @@ matrix qr::inverse(const matrix& A){
         e_i[i] = 1;
         R_inverse[i] = qr::backsubstitution(R,e_i); 
     }
-
-
-    matrix A_inverse =  R_inverse * Q.transpose();
-    return A_inverse;
-}//inverse
+    return R_inverse;
+}
 
 } // namespace pp

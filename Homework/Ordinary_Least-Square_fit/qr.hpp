@@ -11,9 +11,13 @@ static vector backsubstitution(const matrix& R, const vector& b);
 
 static vector solve(const matrix& A, const vector& b);
 
+static vector solve_QR(const matrix & Q, const matrix& R, const vector& b);
+
 static double det(const matrix& A);
 
 static matrix inverse(const matrix& A);
+
+static matrix R_inverse(const matrix& R);
 
 };
 

@@ -28,13 +28,17 @@ int main(){
     };
 
     //Performing the fit
-    pp::vector c = lsfit(fs, time, y, dy);
+    auto [c,Cov] = lsfit(fs, time, y, dy);
     
     //Output the function as f(t) = exp(c[0]) exp(c[1] * t)
     std::ofstream outfile("Fit_result.txt");
     outfile << "alpha = " << std::exp(c[0]) << "\n";
+    outfile << "dalpha = " << c[0] * std::sqrt(Cov[0][0]) << "\n";
     outfile << "lambda = " << -1* c[1] << "\n";
-    outfile << "f(x) = alpha * exp(-lambda * x)" ;
+    outfile << "dlambda = " << std::sqrt(Cov[1][1]) << "\n";
+    outfile << "f(x) = alpha * exp(-lambda * x)\n" ;
+    outfile << "g(x) = (alpha + dalpha) * exp(-(lambda + dlambda) * x) \n";
+    outfile << "h(x) = (alpha - dalpha) * exp(-(lambda - dlambda) * x) \n";
     outfile.close();
 
     //Output of the datapoint for plotting
@@ -43,11 +47,16 @@ int main(){
         std::cout << time[i] << " " << activity[i] << " " << uncertainty[i] << "\n";
     }
 
-    std::cout << "\n#Best fit: f(x) = " << std::exp(c[0]) << " * exp(" << c[1] << " * x)\n";
-    std::cout << "#The halflife is ln(2) / lamba = " << std::log(2) / (-1* c[1]) << "\n";
-    std::cout << "#From google: halflife 224Ra = 3,6316 days, so it is a bit off.\n";
+    std::cout << "\nBest fit: f(x) = " << std::exp(c[0]) << " * exp(" << c[1] << " * x)\n";
+    std::cout << "The halflife is ln(2) / lamba = " << std::log(2) / (-1* c[1]) << "\n";
+    std::cout << "From google: halflife 224Ra = 3,6316 days, so it is a bit off.\n";
 
 
+    //Uncertainty (covariance matrix) for part B:
+    std::cout << "Covariance:";
+    Cov.print();   
+    std::cout << "The uncertainty on the halflife is dT_1/2 = |partial T_1/2 / partial lambda| dlambda = ... = T_1/2 * dlambda / lambda = " << std::log(2) * std::sqrt(Cov[1,1]) / (c[1] * c[1]) << "\n";
+    std::cout << "The modern value is not in this uncertainty range.\n";
 
     return 0;
 }

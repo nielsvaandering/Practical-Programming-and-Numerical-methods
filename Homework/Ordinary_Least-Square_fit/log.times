@@ -6,5 +6,7 @@
 	set xlabel "Time (years)" ;\
 	set ylabel "Activity" ;\
 	plot "Out.txt" using 1:2:3 with yerrorbars title "Rutherford and Soddy datapoints", \
-	f(x) with lines title title_str ;\
+	f(x) with lines title title_str ,\
+	g(x) with lines title "c+dc",\
+	h(x) with lines title "c-dc";\
 	

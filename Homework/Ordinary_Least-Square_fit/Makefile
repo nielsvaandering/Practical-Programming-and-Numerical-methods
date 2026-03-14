@@ -10,7 +10,9 @@ Decay.svg: Out.txt Fit_result.txt #Makefile
 		set xlabel "Time (years)" ;\
 		set ylabel "Activity" ;\
 		plot "$<" using 1:2:3 with yerrorbars title "Rutherford and Soddy datapoints", \
-		f(x) with lines title title_str ;\
+		f(x) with lines title title_str ,\
+		g(x) with lines title "c+dc",\
+		h(x) with lines title "c-dc";\
 		' | tee log.times | gnuplot
 
 Out.txt: main
@@ -25,3 +27,6 @@ main.o: main.cpp
 qr.o: qr.cpp qr.hpp matrix.hpp
 
 fit.o: qr.hpp fit.cpp fit.hpp matrix.hpp
+
+clean:
+	rm *.svg *.txt main *.o log.times

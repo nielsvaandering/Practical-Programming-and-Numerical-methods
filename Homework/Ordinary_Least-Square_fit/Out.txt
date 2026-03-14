@@ -9,6 +9,11 @@
 13 15.2 2
 15 11.1 2
 
-#Best fit: f(x) = 142.404 * exp(-0.170624 * x)
-#The halflife is ln(2) / lamba = 4.06242
-#From google: halflife 224Ra = 3,6316 days, so it is a bit off.
+Best fit: f(x) = 142.404 * exp(-0.170624 * x)
+The halflife is ln(2) / lamba = 4.06242
+From google: halflife 224Ra = 3,6316 days, so it is a bit off.
+Covariance:
+   0.00125  -0.000197 
+ -0.000197   5.12e-05 
+The uncertainty on the halflife is dT_1/2 = |partial T_1/2 / partial lambda| dlambda = ... = T_1/2 * dlambda / lambda = 0.170394
+The modern value is not in this uncertainty range.
