@@ -32,7 +32,7 @@ main2: main2.o qr.o make_test_matrix.o
 main2.o: main2.cpp  
 
 Out.txt: main #Makefile
-	./main -n 10 -m 7 -N 10> $@
+	./main -n 10 -m 7 -N 10 > $@
 
 main: main.o qr.o make_test_matrix.o 
 

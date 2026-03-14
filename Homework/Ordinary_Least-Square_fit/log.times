@@ -1,0 +1,10 @@
+\
+	load "Fit_result.txt" ;\
+	title_str = sprintf("f(t) = %.5f * exp(-%.5f * t)", alpha, lambda) ;\
+	set terminal svg background "white" ;\
+	set output "Decay.svg" ;\
+	set xlabel "Time (years)" ;\
+	set ylabel "Activity" ;\
+	plot "Out.txt" using 1:2:3 with yerrorbars title "Rutherford and Soddy datapoints", \
+	f(x) with lines title title_str ;\
+	

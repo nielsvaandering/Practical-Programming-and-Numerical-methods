@@ -1,0 +1,3 @@
+alpha = 142.404
+lambda = 0.170624
+f(x) = alpha * exp(-lambda * x)
