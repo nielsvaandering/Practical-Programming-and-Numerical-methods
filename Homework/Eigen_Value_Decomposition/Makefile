@@ -87,10 +87,8 @@ main2.o: main2.cpp
 
 #After seeing the convergence plots for dr and rmax, rmax = 3 and dr = 0.01 does converge the energy, but I noticed changing rmax changes the wavefunctions.
 #To compare with the plot online I found by googeling "eigenfunctions hydrogen s-wave radial SE", I am taking rmax to be  40
-Out.txt: main
+Out.txt Wavefunctions.txt: main
 	./$< -N 20 -dr 0.05 -rmax 40 > $@
-
-Wavefunctions.txt: Out.txt
 
 main: main.o EVD.o random_symmetric_matrix.o hydrogen_SE.o
 

@@ -1,0 +1,9 @@
+\
+	set terminal svg background "white" ;\
+	set output "Linear_interpolation.svg" ;\
+	set xlabel "x" ;\
+	set ylabel "y" ;\
+	plot "Out.txt" using 1:2 with points title "cos(x)", \
+     		"linear_interpolation.txt" using 1:2 with points title "Linear_interpolation", \
+     		"linear_interpolation.txt" using 1:3 with points title "Linear_interpolation Integral" ;\
+	

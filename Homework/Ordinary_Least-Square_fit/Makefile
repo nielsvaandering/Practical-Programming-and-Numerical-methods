@@ -15,10 +15,8 @@ Decay.svg: Out.txt Fit_result.txt #Makefile
 		h(x) with lines title "c-dc";\
 		' | tee log.times | gnuplot
 
-Out.txt: main
+Out.txt Fit_function.txt: main
 	./$< > $@
-
-Fit_function.txt: Out.txt
 
 main: main.o fit.o qr.o
 
