@@ -1,5 +1,8 @@
 \
 	set terminal svg background "white" ;\
-	set output "First_test.svg" ;\
-	plot "Out.txt" using 1:3 with linespoints title "Solving u = -u"; \
+	set output "B_precession_planet.svg" ;\
+	set size ratio 1 ;\
+	plot "Out.txt" index 2 using (1/$2)*cos($1):(1/$2)*sin($1) with points title "B1", \
+	"Out.txt" index 3 using (1/$2)*cos($1):(1/$2)*sin($1) with lines title "B2", \
+	"Out.txt" index 4 using (1/$2)*cos($1):(1/$2)*sin($1) with lines dashtype 2 title "B3"; \
 	
