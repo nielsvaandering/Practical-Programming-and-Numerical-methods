@@ -1,0 +1,6 @@
+int_[0,1] sqrt(x) = 2/3, and the integrator gives: 0.666954
+int_[0,1] 1 / sqrt(x) = 2, and the integrator gives: 1.99996
+int_[0,1] sqrt(1 - x^2) =  pi / 4 (error in exercise. In the exercise it says pi / 2), and the integrator gives: 0.785812
+int_[0,1] log(x) / sqrt(x) = -4, and the integrator gives: -3.99992
+
+On the test functions, the integrator is very close and we can get it closer by giving it a lower acc/eps

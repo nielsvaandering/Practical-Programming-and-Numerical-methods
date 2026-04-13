@@ -1,0 +1,7 @@
+\
+	set terminal svg background "white" ;\
+	set output "Error_function.svg" ;\
+	set title "My implementation erf(z) compared to std::erf(z)";\
+	plot "error_function.txt" using 1:2 with linespoints title "my implementation erf(z)", \
+	"error_function.txt" using 1:3 with linespoints title "std::erf(z)"; \
+	

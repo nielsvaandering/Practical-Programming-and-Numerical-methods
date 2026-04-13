@@ -1,0 +1,9 @@
+\
+	set terminal svg background "white" ;\
+	set output "Error_function_error.svg" ;\
+	set logscale xy ;\
+	set xlabel "acc" ;\
+	set ylabel "error" ;\
+	set title "Difference my implementation erf(z) and tabulated value" ;\
+	plot "erf1.txt" using 1:2 with linespoints;\
+	

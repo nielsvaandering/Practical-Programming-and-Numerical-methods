@@ -1,0 +1,6 @@
+#Given acc and error with tabulated value of erf(1)
+0.1  0.000190425
+0.01  0.000190425
+0.001  2.91655e-05
+0.0001  4.29558e-07
+1e-05  2.82274e-08
