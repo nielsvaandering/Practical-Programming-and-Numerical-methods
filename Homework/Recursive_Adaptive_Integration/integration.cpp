@@ -1,6 +1,6 @@
 #include "integration.hpp"
 
-std::pair<double,int> Recursive_open_integrator(std::function<double(double)> f, double a, double b, double acc, double eps, int max_iterations, int evaluations ,double f2, double f3)
+std::tuple<double,int, double> Recursive_open_integrator(std::function<double(double)> f, double a, double b, double acc, double eps, int max_iterations, int evaluations ,double f2, double f3)
 {
     double h = b - a;
     if(std::isnan(f2) || std::isnan(f3)){ //For first call, we dont have points to reuse
@@ -18,18 +18,18 @@ std::pair<double,int> Recursive_open_integrator(std::function<double(double)> f,
     double err = std::abs(Q - q);
     double tol = acc + eps * std::abs(Q);
 
-    if(err < tol) return std::make_pair(Q,evaluations);
+    if(err < tol) return std::make_tuple(Q,evaluations, err);
     //Since we have to include a counter of evaluations, I have to split it up in left and right, instead of the beautifull code it was
     else{
-        auto [int_left, eval_left] = Recursive_open_integrator(f, a, (a + b) / 2, acc/std::sqrt(2), eps, max_iterations-1, evaluations, f1, f2);
-        auto [int_right, eval_right] = Recursive_open_integrator(f, (a + b) / 2, b, acc/std::sqrt(2), eps, max_iterations-1, eval_left, f3, f4);
-        return std::make_pair(int_left + int_right, eval_right);
+        auto [int_left, eval_left, err_left] = Recursive_open_integrator(f, a, (a + b) / 2, acc/std::sqrt(2), eps, max_iterations-1, evaluations, f1, f2);
+        auto [int_right, eval_right, err_right] = Recursive_open_integrator(f, (a + b) / 2, b, acc/std::sqrt(2), eps, max_iterations-1, eval_left, f3, f4);
+        return std::make_tuple(int_left + int_right, eval_right, std::sqrt(std::pow(err_left,2) + std::pow(err_right,2)));
     };
 }
 
 
 //For this part, we just have to do the transformation, and then call the integrator from A
-std::pair<double, int> Clenshaw_Curtis_integrator(std::function<double(double)> f, double a, double b, double acc, double eps, int max_iterations){
+std::tuple<double, int, double> Clenshaw_Curtis_integrator(std::function<double(double)> f, double a, double b, double acc, double eps, int max_iterations){
     constexpr double PI = std::numbers::pi;
 
     std::function<double(double)> g = [f, a, b](double theta){
@@ -40,7 +40,7 @@ std::pair<double, int> Clenshaw_Curtis_integrator(std::function<double(double)> 
 }
 
 //The idea is to do a variable transformation (from page 12 in lecture notes), and then give that transformed function to Clenshaw_Curtis_integrator
-std::pair<double, int> Integral_infinity(std::function<double(double)> f, double a, double acc, double eps, int max_iterations)
+std::tuple<double, int, double> Integral_infinity(std::function<double(double)> f, double a, double acc, double eps, int max_iterations)
 {
     std::function<double(double)> g = [f,a](double t){
         return f(a + (1 - t) / t) / std::pow(t ,2 );

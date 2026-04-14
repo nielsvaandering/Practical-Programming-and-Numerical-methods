@@ -19,7 +19,7 @@ Error_function_error.svg: erf1.txt #Makefile
 		set logscale xy ;\
 		set xlabel "acc" ;\
 		set ylabel "error" ;\
-		set title "Difference my implementation erf(z) and tabulated value" ;\
+		set title "Difference my implementation erf(1) and tabulated value" ;\
 		plot "$<" using 1:2 with linespoints;\
 		' | tee log.erf_error | gnuplot
 
