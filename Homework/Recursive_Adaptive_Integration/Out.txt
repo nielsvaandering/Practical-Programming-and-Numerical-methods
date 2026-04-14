@@ -1,6 +1,20 @@
+Part A: basic integrator
 int_[0,1] sqrt(x) = 2/3, and the integrator gives: 0.666954
 int_[0,1] 1 / sqrt(x) = 2, and the integrator gives: 1.99996
 int_[0,1] sqrt(1 - x^2) =  pi / 4 (error in exercise. In the exercise it says pi / 2), and the integrator gives: 0.785812
 int_[0,1] log(x) / sqrt(x) = -4, and the integrator gives: -3.99992
 
 On the test functions, the integrator is very close and we can get it closer by giving it a lower acc/eps
+
+Check Clenshaw curtis integrator:
+int_[0,1] 1 / sqrt(x) = 2, and integrator says: 1.99999 And got it in 16 evaluations instead of 8572 from A
+int_[0,1] log(x) / sqrt(x) = -4, and integrator says: -3.99987 And got it in 8572 evaluations instead of 8604 from A
+I also run the python-code to get their evaluations (compare_evaluations_integrand.py), but I had to run in elsewhere, since I have no python in this environment. 
+It took 231 and 315 evaluations respectively, so my code outperformed scipy in the first case, but scipy outperformed me by a lot in the second case
+
+Integrator to infinity:
+int_[0,infty] e^(-x) = 1, and integrator says: 0.998397 with 32 evaluations. Python did it in 75 evaluations
+int_[0,infty] e^(-x^2) = sqrt(pi)/2, and integrator says: 0.885894 with 40 evaluations. Python did it in 75 evaluations
+int_[0,infty] 1 / (1 + x^2) = pi / 2, and integrator says: 1.57086 with 40 evaluations. Python did it in 15 evaluations
+By comparing the number of evaluations with python, my code needed less evaluations for the first 2, but more for the last one. 
+In all 3 cases the number of evaluations was in the same order of magnitude
