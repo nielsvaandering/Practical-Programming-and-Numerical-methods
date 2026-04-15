@@ -1,0 +1,16 @@
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+10 2.8 0.4 0.341593 0.505964 0.0584073
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+100 3.24 0.4 0.0984073 0.170833 0.101593
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+500 3.136 0.048 0.00559265 0.07618 0.0935927
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+1000 3.148 0.048 0.00640735 0.0535528 0.0775927
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+5000 3.1488 0.0328 0.00720735 0.0233564 0.0135927
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+10000 3.1588 0.0076 0.0172073 0.0165073 0.0123927
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+50000 3.14824 0.0028 0.00664735 0.00733907 0.00160735
+#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC
+100000 3.14012 0.00628 0.00147265 0.00519847 0.00247265

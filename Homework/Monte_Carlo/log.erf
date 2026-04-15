@@ -1,10 +1,12 @@
 \
 	set terminal svg background "white" ;\
-	set output "Error_area_circle.svg" ;\
-	set title "MC integration circle. The estimated error compared to acual error as function of N";\
+	set output "Quasi_random_comparison.svg" ;\
+	set title "The estimated error compared to acual error as function of N by integrating circle";\
 	set logscale x ;\
 	set xlabel "Number of evaluations (N)" ;\
 	set ylabel "Error" ;\
-	plot "area_circle.txt" using 1:3 with linespoints title "Estimated error", \
-	"area_circle.txt" using 1:4 with linespoints title "Actual error"; \
+	plot "area_circle_quasi_random.txt" using 1:5 with linespoints title "Estimated error plain MC", \
+	"area_circle_quasi_random.txt" using 1:6 with linespoints title "Actual error plain MC", \
+	"area_circle_quasi_random.txt" using 1:3 with linespoints title "estimated error Quasi random", \
+	"area_circle_quasi_random.txt" using 1:4 with linespoints title "Actual error Quasi random"; \
 	

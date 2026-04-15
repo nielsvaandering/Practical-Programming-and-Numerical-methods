@@ -52,7 +52,20 @@ int main(){
     auto [int_A_exercise, estimated_error_A] = MC::plain_MC(g,A_a_exercise, A_b_exercise, 5000000);
     std::cout << "For yor try calculating this intregral with solution 1.3932039296856768591842462603255, my MC integrator gets: " << int_A_exercise << "\n";
 
+    //Part B: Quasi-Random number generator
+    std::cout << "\nPart B: Quasi-random number generator\n";
+    std::cout << "I'm now completely sure how to determine the uncertainty, but I will do a conservative quess of the absolute difference between \nthe outcome for 2 different sequences \n";
+    std::cout << "To test, I will do the circle again with the quasi-random number integrator.\nThe result can be seen in Quasi_random_comparison.svg\n";
+
+    std::ofstream outfile2("area_circle_quasi_random.txt");
+     for(int i = 0; i < int(N_list.size());i++){
+        auto [int_circle, error_circle] = MC::Quasi_Random_MC(f, a_circle, b_circle,N_list[i]);
+        outfile2 << "#Results for quasi-random integrator for area of circle. Format: N, integral result, error estimation, real error, error estimation for plain_MC, real error plain_MC\n";
+        outfile2 << N_list[i] << " " << int_circle << " " << error_circle << " " << std::abs(int_circle - PI) << " " << error_circle_list[i] << " " << actual_error_circle[i] << "\n";
+    };
+    outfile2.close();
 
     
+
     return 0;
 }
