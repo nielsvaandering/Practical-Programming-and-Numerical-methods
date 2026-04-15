@@ -1,0 +1,4 @@
+For error circle as function of N, see Error_area_circle.svg
+For me (at least at the point of writing), the error doesn't look like 1 / sqrt(n) 
+in the beginning, but from N~500, it looks like 1 / sqrt(N)
+For yor try calculating this intregral with solution 1.3932039296856768591842462603255, my MC integrator gets: 1.41604
