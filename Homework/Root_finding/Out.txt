@@ -1,0 +1,8 @@
+Part A:
+For the Rosenbrock function, It found extremum at (x,y) (should be (a,a^2) according to wikipedia, and I used) a = 1 :
+         1          1 
+
+For the Himmelblau function, It found extremum at (x,y): 
+    -0.271     -0.923 
+This is the local maximum according to wikipedia. I will also find 1 of the 3 local minima by using a different starting point (x,y):
+     -2.81       3.13 

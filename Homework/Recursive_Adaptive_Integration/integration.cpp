@@ -2,6 +2,7 @@
 
 std::tuple<double,int, double> Recursive_open_integrator(std::function<double(double)> f, double a, double b, double acc, double eps, int max_iterations, int evaluations ,double f2, double f3)
 {
+    if(max_iterations <= 0){throw std::runtime_error("Integral not converged within iteration limit!");}
     double h = b - a;
     if(std::isnan(f2) || std::isnan(f3)){ //For first call, we dont have points to reuse
         evaluations += 2;

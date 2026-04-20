@@ -3,6 +3,7 @@
 #include<cmath>
 #include<utility>
 #include<tuple>
+#include<stdexcept>
 
 
 //Integrator for Part A:
