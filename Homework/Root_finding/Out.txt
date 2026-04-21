@@ -6,3 +6,47 @@ For the Himmelblau function, It found extremum at (x,y):
     -0.271     -0.923 
 This is the local maximum according to wikipedia. I will also find 1 of the 3 local minima by using a different starting point (x,y):
      -2.81       3.13 
+Part B:Bound state of hydrogen atom
+The lowest root for the schoot method for the hydrogen wavefunction is E =    -0.496 
+For the convergence for different rmin, rmax, acc, eps (in the ODE), see the .svg files
+For some reason I cannot explain, there is a very good conergence for rmax = 5, and for eps = 0.1
+
+
+
+#Values for the s-wave function for hydrogen
+  0.000977          0          1 
+    0.0551     0.0523      0.897 
+     0.107     0.0961      0.806 
+     0.163      0.139      0.714 
+      0.23      0.183      0.615 
+     0.309      0.228      0.509 
+     0.403       0.27      0.401 
+     0.513      0.308      0.294 
+     0.641      0.339      0.191 
+     0.791       0.36      0.096 
+     0.967      0.369     0.0136 
+      1.17      0.365    -0.0528 
+      1.41      0.346       -0.1 
+      1.69      0.313     -0.127 
+      2.02      0.269     -0.135 
+      2.42      0.217     -0.127 
+      2.91      0.159     -0.104 
+      3.61     0.0985    -0.0708 
+      4.51     0.0492     -0.038 
+       5.4     0.0241    -0.0192 
+      6.33     0.0113   -0.00869 
+      7.39    0.00531   -0.00263 
+       8.7    0.00449    0.00193 
+        10     0.0105    0.00877 
+
+
+
+#Testing convergence: data: rmin, error, rmax, error, acc, error, eps, error
+
+  9.31e-10    0.00186          1    0.00652      1e-06    0.00278      1e-06    0.00394 
+  9.54e-07    0.00186          2      0.128      1e-05    0.00278      1e-05    0.00394 
+  0.000977    0.00359          5   0.000148     0.0001     0.0028     0.0001    0.00394 
+    0.0312     0.0495          8    0.00359      0.001    0.00295      0.001    0.00395 
+      0.01     0.0196         10    0.00359       0.01    0.00359       0.01    0.00359 
+       0.1      0.114         15    0.00371        0.1     0.0035        0.1   5.09e-05 
+         1      0.318         20    0.00364          1     0.0274          1     0.0175 

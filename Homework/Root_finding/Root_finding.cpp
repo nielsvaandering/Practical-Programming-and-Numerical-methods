@@ -2,7 +2,7 @@
 
 namespace pp{
     //We apprixomate the jacobi matrix by finite distance
-    matrix root::Jacobian(std::function<vector(vector)> f, vector x, vector dx, vector fx)
+    matrix Jacobian(std::function<vector(vector)> f, vector x, vector dx, vector fx)
     {
         int n = x.size();
         matrix J(n, n);
@@ -21,7 +21,7 @@ namespace pp{
         return J;
     }//Jacobian
 
-std::tuple<vector, vector> root::root_finding(std::function<vector(vector)> f, vector x0, vector dx, double acc, double alpha_min, int max_iterations)
+std::tuple<vector, vector> root_finding(std::function<vector(vector)> f, vector x0, vector dx, double acc, double alpha_min, int max_iterations)
 {
     vector fx = f(x0);
     if(std::isnan(dx[0])){

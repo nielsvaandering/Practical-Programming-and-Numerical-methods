@@ -1,0 +1,9 @@
+\
+	set terminal svg background "white" ;\
+	set output "Hydrogen_S_wave.svg" ;\
+	set title "Hydrogen s-wavefunction";\
+	set xlabel "r";\
+	f(x) = x * exp(-x) ;\
+	plot "Out.txt" index 1 using 1:2 with linespoints title "S_0 hydrogen",\
+	f(x) title "f_0(r)=r e^{-r}" with lines;\
+	
