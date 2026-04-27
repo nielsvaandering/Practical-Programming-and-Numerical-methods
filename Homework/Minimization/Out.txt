@@ -1,0 +1,6 @@
+Part A: Finding a (local) minimim for the rosenbrock's valley function and the Himmelblau's function
+It found the following minimum for Rosenbrock function (which should be (1,1) according to wikipedia) in 14 steps:
+         1          1 
+
+It found a local minimum for Himmelblau function in 6 steps at:
+     -2.81       3.13 
