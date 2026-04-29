@@ -7,13 +7,18 @@
 namespace pp{
 
     //returns the gradient
-    vector gradient(std::function<double(pp::vector)> f, pp::vector& x, double fx);
+    vector gradient(std::function<double(pp::vector)> f, pp::vector& x);
 
     //returns the Hessian matrix (second derivatives)
-    matrix Hessian(std::function<double(pp::vector)> f, pp::vector& x, double fx);
+    matrix Hessian(std::function<double(pp::vector)> f, pp::vector& x);
 
     //Finds the (local) minimum for a function f using newtons method. Returns the location of the minimum, and the number of iterations it took
     std::tuple<pp::vector, int> Newton_minimizer(std::function<double(pp::vector)> f, vector x0, double acc = 0.001, int max_iterations = 10000);
+
+    //Using the cental difference
+    std::tuple<pp::vector, pp::matrix> grad_Hessian(std::function<double(pp::vector)> f, pp::vector& x);
+
+    std::tuple<pp::vector, int> Newton_min_central(std::function<double(pp::vector)> f, vector x0, double acc = 0.001, int max_iterations = 10000);
 
 }//pp
 

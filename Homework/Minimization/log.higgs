@@ -1,0 +1,12 @@
+\
+	load "Fit_result.txt" ;\
+	title_str = sprintf("f(E) = %.3f /  ((E - %.3f)^2 + %.3f ^2 / 4)", A, m, Gamma) ;\
+	set terminal svg background "white" ;\
+	set output "Higgs_plot.svg" ;\
+	set title "Higgs data + fit";\
+	set ylabel "Signal";\
+	set xlabel "Energy (E)";\
+	set samples 1000 ;\
+	plot "higgs_data.txt" using 1:2:3 with yerrorbars title "Higgs data",\
+	f(x) with lines title title_str ;\
+	

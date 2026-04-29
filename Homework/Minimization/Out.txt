@@ -1,6 +1,27 @@
 Part A: Finding a (local) minimim for the rosenbrock's valley function and the Himmelblau's function
-It found the following minimum for Rosenbrock function (which should be (1,1) according to wikipedia) in 14 steps:
-         1          1 
+It found the following minimum for Rosenbrock function (which should be (1,1) according to wikipedia) in 13 steps:
+Local minimum Rosenbrock:         1          1 
 
-It found a local minimum for Himmelblau function in 6 steps at:
-     -2.81       3.13 
+It found a local minimum for Himmelblau function in 7 steps at:
+         3          2 
+
+Part B: Higgs bososn
+Fit parameters for Higgs boson: 
+m = 125.972,
+Gamma = 2.08625,
+A = 9.8758
+It did the fit in 7 iterations
+
+
+Part C: Using central difference instead of forward difference
+I will test this on the same functions as in A and B
+Minimum Ros:         1          1 
+Found it in 9 Iterations
+Minimum Him:         3          2 
+Found it in 12 Iterations
+Higgs fit (m, Gamma, A):       126       2.09       9.88 
+Found it in 7 Iterations
+
+Looking at the result, the minimization of the Rosenbrock function is with less iterations, the Himmelblau function with more iterations, and the higgs fit is equal.
+The advantage of the central difference is that we need less function evaluations for the same result
+Footnote: setting lambda to 0 (so no regularization for the central difference) reduced the number of iterations in Rosenbrock to 3, but had no effect on the others.
