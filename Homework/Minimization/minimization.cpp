@@ -143,6 +143,4 @@ std::tuple<pp::vector, int> Newton_min_central(std::function<double(pp::vector)>
     }
     return std::make_tuple(vector{std::nan("")}, max_iterations); //No minimum found within the iteration limit.
 }//Newton with central difference
-
-
-}//pp
+}//namespace pp

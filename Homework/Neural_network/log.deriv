@@ -1,0 +1,13 @@
+\
+	set terminal svg background "white" ;\
+	set output "Derivative.svg" ;\
+	set xlabel "x" ;\
+	set ylabel "y" ;\
+	set title "Derivative and 2nd derivative of cos(5x - 1)exp(-x^2)" ;\
+	f(x) = exp(-x**2) * (-5 * sin(5 * x - 1) - 2 * x * cos(5 * x - 1)) ;\
+	g(x) = exp(-x**2) * ((4 * x**2 - 27) * cos(5 * x - 1) + 20 * x * sin(5 * x - 1)) ;\
+	plot "Out.txt" index 1 using 1:2 with points title "Derivative (from Neural network)", \
+	"Out.txt" index 1 using 1:3 with points title "2nd derivative (from Neural network)", \
+	f(x) title "df / dx " ,\
+	g(x) title " d^2 f / dx^2 ";\
+	

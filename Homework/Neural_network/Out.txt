@@ -1,0 +1,97 @@
+Part A: Neural network
+The datapoints to train the network are from f(x) = cos(5x-1)e^(-x^2). The trainingpoints are the following:
+x =         -1       -0.9       -0.8       -0.7       -0.6       -0.5       -0.4       -0.3       -0.2       -0.1          0        0.1        0.2        0.3        0.4        0.5        0.6        0.7        0.8        0.9 
+y =      0.353      0.315       0.15     -0.129     -0.456     -0.729     -0.844     -0.732       -0.4       0.07       0.54      0.869      0.961      0.802       0.46     0.0551      -0.29     -0.491     -0.522     -0.417 
+
+Minimizing the cost function (training) for the traingsdata with default activation function (cos(5x)exp(-x^2)):
+Minimization in 136 iterations
+Cost function after minimization is: 0.000242286
+
+Minimizing the cost function (training) for the traingsdata with Gaussian wavelet (x*e^(-x^2)):
+Minimization in 217 iterations
+Cost function after minimization is: 0.00010566
+
+Minimizing the cost function (training) for the traingsdata with Gaus (e^(-x^2)):
+Minimization in 259 iterations
+Cost function after minimization is: 0.00073163
+
+Minimizing the cost function (training) for the traingsdata with RELU (0: x< 0, x: x>0):
+Minimization in 78 iterations
+Cost function after minimization is: 0.300739
+
+Since the Gaussian wavelet has the lowest cost function, I will print the output at the traingspoint, so we can compare with y
+Gaussian wavelet at the trainingpoints =      0.354      0.318       0.14     -0.138     -0.451     -0.714     -0.836      -0.74     -0.414     0.0669      0.552      0.882       0.96      0.786      0.446     0.0572     -0.273     -0.477     -0.525     -0.424 
+
+Just for fun, lets compare some inbetween points for all the different neural network to see how well they perform in between the traingsdata
+Neural network with a wavelet:
+ Test for x = 0.15, g(x) = 0.947355 and neural network says: 0.944683
+Neural network with a wavelet:
+ Test for x = 0.55, g(x) = -0.131718 and neural network says: -0.135232
+Neural network with a wavelet:
+ Test for x = 0.1, g(x) = 0.86885 and neural network says: 0.868478
+
+Neural network with gausian wavelet:
+ Test for x = 0.15, g(x) = 0.947355 and neural network says: 0.954927
+Neural network with gausian wavelet:
+ Test for x = 0.55, g(x) = -0.131718 and neural network says: -0.120467
+Neural network with gaisian wavelet:
+ Test for x = -0.45, g(x) = -0.811892 and neural network says: -0.798531
+Neural network with gausian wavelet:
+ Test for x = 0.789, g(x) = -0.526254 and neural network says: -0.527599
+
+Neural network with gaus:
+ Test for x = 0.15, g(x) = 0.947355 and neural network says: 0.974591
+Neural network with gaus:
+ Test for x = 0.55, g(x) = -0.131718 and neural network says: -0.130107
+Neural network with gaus
+ Test for x = -0.45, g(x) = -0.811892 and neural network says: -0.789736
+Neural network with gaus
+ Test for x = 0.789, g(x) = -0.526254 and neural network says: -0.491449
+
+Neural network with RELU:
+ Test for x = 0.15, g(x) = 0.947355 and neural network says: 0.00645811
+Neural network with RELU:
+ Test for x = 0.55, g(x) = -0.131718 and neural network says: 0.0109099
+Neural network with RELU:
+ Test for x = -0.45, g(x) = -0.811892 and neural network says: 0.000265355
+Neural network with RELU:
+ Test for x = 0.789, g(x) = -0.526254 and neural network says: 0.0135758
+
+
+#Part B: Derivative, second derivative
+#To see the plot, look at Derivative.svg
+#In the plot, we can see that the first derivative is quite good. The second derivative follows the overall shape, but is not accurate.
+#The data under here is what was used to make the plot. The first column is x, then f'(x) and as last f''(x)
+-1 0.439326 -16.2119
+-0.9375 -0.556926 -15.5658
+-0.875 -1.47367 -13.4773
+-0.8125 -2.2409 -10.6032
+-0.75 -2.80406 -7.56009
+-0.6875 -3.11508 -2.92183
+-0.625 -3.12579 2.82086
+-0.5625 -2.79053 9.16323
+-0.5 -2.08054 13.8341
+-0.4375 -1.00709 19.3201
+-0.375 0.355718 23.4556
+-0.3125 1.86031 24.9885
+-0.25 3.29682 21.1852
+-0.1875 4.42842 14.5973
+-0.125 5.04364 4.64252
+-0.0625 5.01017 -5.91649
+0 4.31227 -16.0023
+0.0625 3.05838 -23.2805
+0.125 1.45597 -26.8074
+0.1875 -0.238008 -26.9094
+0.25 -1.77472 -23.0944
+0.3125 -2.96172 -15.7064
+0.375 -3.68983 -8.18975
+0.4375 -3.93536 0.748043
+0.5 -3.74311 5.9158
+0.5625 -3.20003 10.8307
+0.625 -2.40969 13.8035
+0.6875 -1.47384 15.8174
+0.75 -0.483286 15.7448
+0.8125 0.484237 14.83
+0.875 1.36268 12.9483
+0.9375 2.09634 10.226
+1 2.64036 7.04934
