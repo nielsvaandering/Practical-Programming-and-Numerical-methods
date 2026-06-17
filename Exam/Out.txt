@@ -1,0 +1,65 @@
+Checking the recursive adaptive integrator with subdevision into 3 subinertvals and the error estimation of the integral on some basic functions from the homework on recursive adaptive integration
+∫_0^1 dx √(x) = 2/3, and the integrators returns: 0.66688 with estimated error 0.000199252. It used 15 evaluations of the integrand.
+to check accuracy; |result - exact| < acc + |exact| * eps  => 0.000213705 < 0.00166688
+The integrator from the Homework did it in 16 evaluations.
+
+∫_0^1 dx 1/√(x) = 2, and the integrators returns: 1.99975 with estimated error 0.00095808. It used 5357 evaluations of the integrand.
+to check accuracy; |result - exact| < acc + |exact| * eps  => 0.000245427 < 0.00299975
+Note: It evaluates the integrand eventually as infinity, it hits machine precision for the interval width and triggers the max_depth notification.
+The integrator from the Homework did it in 8572 evaluations.
+
+∫_0^1 dx √(1-x²) = π/4, and the integrators returns: 0.785703 with estimated error 0.000386989. It used 15 evaluations of the integrand.
+to check accuracy; |result - exact| < acc + |exact| * eps  => 0.000304951 < 0.0017857
+The integrator from the Homework did it in  16 evaluations.
+
+∫_0^1 dx ln(x)/√(x) = -4, and the integrators returns: -3.99987 with estimated error 0.00094203. It used 10705 evaluations of the integrand.
+to check accuracy; |result - exact| < acc + |exact| * eps  => 0.000125241 < 0.00499987
+Note: It evaluates the integrand eventually as nan, it hits machine precision for the interval width and triggers the max_depth notification.
+The integrator from the Homework did it in 8604 evaluations.
+
+
+COMMENT: In 3 of the 4 cases, the adaptive recursive integrator with 3 sub-intervals uses less function evaluations then the integrator with 2 sub-intervals from the Homework.
+ To compare both of them even more, I asked chatbot for some (finite) integrals to compare them even more. It came up with the following integrals:
+∫_0^π dx sin(x) = 2, and integrator returns 2. It used 27 evaluations.
+The homework integrator used 32 evaluations
+
+∫_0^1 dx exp(x) = 1.7183, and integrator returns 1.71828. It used 9 evaluations.
+The homework integrator used 12 evaluations
+
+∫_0^1 dx exp(-x^2) = 0.7468 , and integrator returns 0.746822. It used 9 evaluations.
+The homework integrator used 12 evaluations
+
+∫_0^1 dx 1 / (1+x) = 0.693, and integrator returns 0.693138. It used 9 evaluations.
+The homework integrator used 8 evaluations
+∫_0^1 dx x^3 = 1/4, and integrator returns 0.25. It used 15 evaluations.
+The homework integrator used 16 evaluations
+
+
+CLENSHAW-CURTIS TRANSFORMATION:
+With the Clenshaw-Curtis (CC) variable transformation:
+∫_0^1 dx √(x) = 2/3, and the integrators returns: 0.666665. It used 27 evaluations of the integrand instead of the 15 evaluations without the transformation.
+The homework integrator with the CC transformation used 28 evaluations.
+
+∫_0^1 dx 1/√(x) = 2, and the integrators returns: 1.99998. It used 9 evaluations of the integrand instead of the 5357 evaluations without the transformation.
+The homework integrator with the CC transformation used 16 evaluations.
+
+∫_0^1 dx √(1-x²) = π/4, and the integrators returns: 0.785397. It used 27 evaluations of the integrand instead of the 15 evaluations without the transformation.
+The homework integrator with the CC transformation used 32 evaluations.
+
+∫_0^1 dx ln(x)/√(x) = -4, and the integrators returns: -3.99988. It used 75 evaluations of the integrand instead of the 10705 evaluations without the transformation.
+The homework integrator with the CC transformation used 96 evaluations.
+
+COMMENT: This integrator with 4 sub-intervals outperforms the homework integrator when they both use the Clenshaw-Curtis transformation. 
+Interesting to note: for the integrals which used 'few', the number of evaluations increased (a little). The integrals with 'a lot' of evaluations got a significant reduction in function evaluations.
+
+
+Infinite limits on the integrals:
+∫_0^inf dx exp(-x) = 1, and the integrator says: 1.00016 with error 0.000622845. It used 33 evaluations.
+∫_^inf dx 1 / x^2 = 1, and the integrator says: 0.999998 with error 0.000208619. It used 27 evaluations.
+∫_-inf^inf dx exp(-x^2) = √π = 1.7725, and the integrator says: 1.7728 with error 0.000705485. It used 63 evaluations.
+∫_-inf^inf dx 1 / (1 + x^2) = π, and the integrator says: 3.1418 with error 0.00107087. It used 39 evaluations.
+
+COMMENT: To me, it looks like the integrator also handles infinity as a bound really well. The last thing to do is calculate erf(1) with as much precision as possible.
+For the calculation of erf(1), I will make a plot of calculation erf(1) - online value erf(1) as function of acc (eps = 0). This plot can be found at Error_erf(1).svg.
+When looking at  Error_erf1.svg, it looks like half the datapoints are missing. When having a closer look at erf1.txt, the difference between the calculated value of erf(1) and the found value of erf(1) (wolframalpha) goes to 0 (is 0 for acc= 1e-12).
+I will also make a plot of erf(z) for acc = 1e-12 and plot erf(z) from gnuplot on top of it. The plot can be seen at Erf_z.svg

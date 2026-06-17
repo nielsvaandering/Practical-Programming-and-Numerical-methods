@@ -1,0 +1,9 @@
+\
+	set terminal svg background "white" ;\
+	set output "Erf_z.svg" ;\
+	set xlabel "z" ;\
+	set ylabel "erf(z)" ;\
+	set title "calculated erf(z) with erf(z) from gnuplot" ;\
+	plot "erf_z.txt" using 1:2 with points title "Calculated erf(z)" ,\
+	erf(x) ;\
+	

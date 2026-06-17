@@ -1,0 +1,10 @@
+\
+	set terminal svg background "white" ;\
+	set output "Error_erf1.svg" ;\
+	set logscale xy ;\
+	set xlabel "acc" ;\
+	set ylabel "error" ;\
+	set xrange [] reverse ;\
+	set title "Difference implementation of erf(1) and tabulated value as function of acc" ;\
+	plot "erf1.txt" using 1:2 with linespoints title "calculated erf(1) - tabulated erf(1)";\
+	
