@@ -3,7 +3,7 @@ LDLIBS = -lstdc++ -lm -lpthread
 
 all: Out.txt Error_erf1.svg Erf_z.svg
 
-Erf_z.svg: erf_z.txt Makefile
+Erf_z.svg: erf_z.txt #Makefile
 	echo '\
 		set terminal svg background "white" ;\
 		set output "$@" ;\

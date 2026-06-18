@@ -67,7 +67,7 @@ int main(){
     }
     outfile.close();
 
-    std::vector<double> acc_list{0.1, 0.01, 0.001, 0.0001, 0.00001};
+    std::vector<double> acc_list{0.1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10, 1e-11, 1e-12, 1e-13, 1e-14, 1e-15};
     std::ofstream outfile2("erf1.txt");
     outfile2 << "#Given acc and error with tabulated value of erf(1)\n";
     for(double acc : acc_list){

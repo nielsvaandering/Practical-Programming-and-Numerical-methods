@@ -19,8 +19,9 @@ Error_function_error.svg: erf1.txt #Makefile
 		set logscale xy ;\
 		set xlabel "acc" ;\
 		set ylabel "error" ;\
+		set xrange [] reverse ;\
 		set title "Difference my implementation erf(1) and tabulated value" ;\
-		plot "$<" using 1:2 with linespoints;\
+		plot "$<" using 1:2 with linespoints title "|calculated erf(1) - tabulated|";\
 		' | tee log.erf_error | gnuplot
 
 Out.txt erf1.txt error_function.txt: main

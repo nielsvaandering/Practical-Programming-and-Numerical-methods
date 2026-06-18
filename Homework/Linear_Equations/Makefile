@@ -4,7 +4,7 @@ LDLIBS = -lstdc++ -lm -lpthread
 
 all: Out.txt Times.svg
 
-Times.svg: out.times Makefile
+Times.svg: out.times #Makefile
 	echo '\
 		set terminal svg background "white" ;\
 		set output "$@" ;\
@@ -13,18 +13,17 @@ Times.svg: out.times Makefile
 		a = 1;b = 1; c = 1; d = 1;\
 		f(x) = a + b* x + c* x**2 + d * x**3;\
 		fit f(x) "$<" using 1:2 via a,b,c,d ;\
-		plot "$<" using 1:2 with linespoints title "times QR factorisation of NxN matrix", \
+		plot "$<" using 1:2 with linespoints title "time QR factorisation of NxN matrix", \
 		f(x) title "fit with a + b x + c x^2 + d x^3" ;\
 		' | tee log.times | gnuplot
 
 
-#i get out_times of 0.01 to 0.03-0.04 on my own laptop for N=100 and N=200 respectively, So I will have to get a little bit bigger
+#I get out_times of 0.01 to 0.03-0.04 on my own laptop for N=100 and N=200 respectively, So I will have to get a little bit bigger
 out.times : main2 #Makefile
 	>$@
-	rm -f out err
 	for N in $$(seq 100 100 2000); do \
 		time --format "$$N %e" --output $@ --append \
-		./$< -N $$N 1>>out 2>>err ;\
+		./$< -N $$N ;\
 	done
 
 main2: main2.o qr.o make_test_matrix.o 

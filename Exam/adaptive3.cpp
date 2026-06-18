@@ -8,7 +8,7 @@ std::tuple<double,double> adaptive3(std::function<double(double)> integrand, dou
 
     //Instead of throwing an error, I will just let it return the found result (the return statement can be found later).
     //if(max_depth == depth){throw std::runtime_error("Integral not converged within depthlimit!");}
-    if(max_depth == depth && notification == false){notification = true; std::cerr << "Integral did not converge within the maximum number of steps, so the result may not be accurate\n";}
+    if(max_depth == depth && !notification){notification = true; std::cerr << "Integral did not converge within the maximum number of steps, so the result may not be accurate\n";}
     
     double h = b - a;
     //If h <= 0, we went under machine precision in the interval, so we might as well return 0 for this interval, since it hs width 0
@@ -24,8 +24,8 @@ std::tuple<double,double> adaptive3(std::function<double(double)> integrand, dou
     double f3 = integrand(a + 5.0 * h / 6.0);
 
     //Instead of throwing an error when the evaluation of the function is inf or nan, I will set that part of the integral to 0 and display a message
-    //When experimenting with integrals, it looked like it only throws this message/error when it dives really deep and is within (a few) machine epsilon of the singulatiry of the function.
-    //I think it is therefore relative save to set it to 0, since it has very limited width.
+    //When experimenting with integrals, it looked like it only throws this message/error when the function has a singularity. It will keep zooming in to the singularity and is eventually so close to the singilarity that is will evaluate it as inf
+    //I think it is therefore relative save to set it to 0, since it has very limited width at that point.
     //if(std::isinf(f1) || std::isinf(f3) || std::isnan(f1) || std::isnan(f3)){throw std::runtime_error("Integrand evaluated as infinity!");}
     if(std::isinf(f1) || std::isinf(f3) || std::isnan(f1) || std::isnan(f3)){
         if(notification_2 == false){notification_2 = true; std::cerr << "Integrand evaluated as +-infinity or +-nan. This was neglected and the result might therefore not be correct.\n";};
@@ -43,7 +43,7 @@ std::tuple<double,double> adaptive3(std::function<double(double)> integrand, dou
     //If error low enough (or if we reached max_depth), we can return the integral
     if(err < tol || max_depth == depth){return std::make_tuple(Q, err);}
     
-    //Otherwise, we have to subdevide our intervalt
+    //Otherwise, we have to subdevide our interval
     else{
         //Reason for acc -> acc / sqrt(3); for the 2 intervals, we did acc / sqrt(2). We assume the errors to be independent, so
         // total error = sqrt( acc_1/sqrt(3))^2 + acc_2/sqrt(3))^2 + acc_3/sqrt(3)^2 ) = sqrt( 3 * acc^2 / 3) = acc
@@ -114,7 +114,6 @@ std::tuple<double,int, double> Recursive_open_integrator(std::function<double(do
     double tol = acc + eps * std::abs(Q);
 
     if(err < tol) return std::make_tuple(Q,evaluations, err);
-    //Since we have to include a counter of evaluations, I have to split it up in left and right, instead of the beautifull code it was
     else{
         auto [int_left, eval_left, err_left] = Recursive_open_integrator(f, a, (a + b) / 2, acc/std::sqrt(2), eps, max_iterations-1, evaluations, f1, f2);
         auto [int_right, eval_right, err_right] = Recursive_open_integrator(f, (a + b) / 2, b, acc/std::sqrt(2), eps, max_iterations-1, eval_left, f3, f4);
@@ -127,6 +126,5 @@ std::tuple<double, int, double> CC_homework(std::function<double(double)> f, dou
     std::function<double(double)> g = [f, a, b](double theta){
         return f( (a + b) / 2 + (b - a) / 2 * std::cos(theta)) * std::sin(theta) * (b - a) / 2; 
     };
-
     return Recursive_open_integrator(g, 0, M_PI, acc, eps, max_iterations);
 }

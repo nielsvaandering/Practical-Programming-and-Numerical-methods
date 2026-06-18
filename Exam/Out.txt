@@ -31,6 +31,7 @@ The homework integrator used 12 evaluations
 
 ∫_0^1 dx 1 / (1+x) = 0.693, and integrator returns 0.693138. It used 9 evaluations.
 The homework integrator used 8 evaluations
+
 ∫_0^1 dx x^3 = 1/4, and integrator returns 0.25. It used 15 evaluations.
 The homework integrator used 16 evaluations
 
@@ -49,8 +50,8 @@ The homework integrator with the CC transformation used 32 evaluations.
 ∫_0^1 dx ln(x)/√(x) = -4, and the integrators returns: -3.99988. It used 75 evaluations of the integrand instead of the 10705 evaluations without the transformation.
 The homework integrator with the CC transformation used 96 evaluations.
 
-COMMENT: This integrator with 4 sub-intervals outperforms the homework integrator when they both use the Clenshaw-Curtis transformation. 
-Interesting to note: for the integrals which used 'few', the number of evaluations increased (a little). The integrals with 'a lot' of evaluations got a significant reduction in function evaluations.
+COMMENT: This integrator with 3 sub-intervals outperforms the homework integrator when they both use the Clenshaw-Curtis transformation. 
+Interesting to note: for the integrals which used 'few' function evaluations, the number of evaluations increased (a little). The integrals with 'a lot' of evaluations got a significant reduction in function evaluations.
 
 
 Infinite limits on the integrals:

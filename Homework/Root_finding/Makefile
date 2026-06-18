@@ -9,6 +9,7 @@ Convergence_rmax.svg: Out.txt #Makefile
 		set output "$@" ;\
 		set title "Convergence for different values inside the ODE";\
 		set ylabel "error";\
+		set xlabel "rmax" ;\
 		set logscale y;\
 		plot "$<" index 2 using 3:4 with linespoints title "rmax";\
 		' | tee log.times | gnuplot
@@ -21,6 +22,7 @@ Convergence_rmin_acc_eps.svg: Out.txt #Makefile
 		set ylabel "error";\
 		set logscale x;\
 		set logscale y;\
+		set xrange [] reverse ;\
 		plot "$<" index 2 using 1:2 with linespoints title "rmin",\
 		"$<" index 2 using 5:6 with linespoints title "acc",\
 		"$<" index 2 using 7:8 with linespoints title "eps",\

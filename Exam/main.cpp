@@ -8,7 +8,7 @@
 
 int main(){
     //Part A: Implement an adaptive division-by-three integrator and test it on functions from the homework "recursive adaptive integration"
-    //Functions from homework, all integrated over the interval [0,1]. I also keep track over the number of function evaluations
+    //The functions from homework will all integrated over the interval [0,1]. I also keep track over the number of function evaluations
     int eval_sqrtx = 0, eval_over_sqrtx = 0, eval_sqrt1_xx = 0, eval_lnx_sqrtx = 0; 
     std::function<double(double)> sqrt_x = [&eval_sqrtx](double x) {eval_sqrtx++; return std::sqrt(x);}; //  2/3
     std::function<double(double)> over_sqrt_x = [&eval_over_sqrtx](double x) {eval_over_sqrtx++; return 1.0 / std::sqrt(x);};//  2
@@ -65,7 +65,7 @@ int main(){
     std::cout << "∫_0^1 dx exp(-x^2) = 0.7468 , and integrator returns " << std::get<0>(test_gaus) << ". It used " << eval_gaus << " evaluations.\n";
     std::cout << "The homework integrator used " << std::get<1>(Recursive_open_integrator(gaus,0,1)) << " evaluations\n\n"; 
     std::cout << "∫_0^1 dx 1 / (1+x) = 0.693, and integrator returns " << std::get<0>(test_over_1x) << ". It used " << eval_over_1x << " evaluations.\n";
-    std::cout << "The homework integrator used " << std::get<1>(Recursive_open_integrator(over_1x,0,1)) << " evaluations\n"; 
+    std::cout << "The homework integrator used " << std::get<1>(Recursive_open_integrator(over_1x,0,1)) << " evaluations\n\n"; 
     std::cout << "∫_0^1 dx x^3 = 1/4, and integrator returns " << std::get<0>(test_x3) << ". It used " << eval_x3 << " evaluations.\n";
     std::cout << "The homework integrator used " << std::get<1>(Recursive_open_integrator(x3,0,1)) << " evaluations\n\n\n"; 
     
@@ -98,7 +98,7 @@ int main(){
     auto CC4 = CC_homework(lnx_sqrtx, 0,1);
     std::cout << "The homework integrator with the CC transformation used " << std::get<1>(CC4) << " evaluations.\n\n";
 
-    std::cout << "COMMENT: This integrator with 4 sub-intervals outperforms the homework integrator when they both use the Clenshaw-Curtis transformation. \nInteresting to note: for the integrals which used 'few', the number of evaluations increased (a little). The integrals with 'a lot' of evaluations got a significant reduction in function evaluations.\n\n\n";
+    std::cout << "COMMENT: This integrator with 3 sub-intervals outperforms the homework integrator when they both use the Clenshaw-Curtis transformation. \nInteresting to note: for the integrals which used 'few' function evaluations, the number of evaluations increased (a little). The integrals with 'a lot' of evaluations got a significant reduction in function evaluations.\n\n\n";
 
 
 
